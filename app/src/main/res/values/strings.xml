@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">JetPack Pro</string>
+    <string name="title">Title</string>
+    <string name="overview">Overview</string>
+    <string name="release_date">Release Date</string>
+    <string name="date">Release Date: %s</string>
+    <string name="rating">Rating</string>
+    <string name="tvshows">TV SHOWS</string>
+    <string name="movies">MOVIES</string>
+    <string name="image_splashscreen">img_splash</string>
+    <string name="detail">Detail</string>
+    <string name="menu_favorite">Menu Favorite</string>
+
+    <string name="empty_state_title">No favorites yet</string>
+    <string name="empty_state_desc_no_favorite_item_movie">You don\'t have a list of favorite movie</string>
+    <string name="empty_state_desc_no_favorite_item_tvshow">You don\'t have a list of favorite tv show</string>
+    <string name="favorite">Favorite</string>
+
+</resources>
