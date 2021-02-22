@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.daday.jetpackpro.ui.ContentViewModel
 import com.daday.jetpackpro.databinding.FragmentTvShowBinding
+import com.daday.jetpackpro.ui.ContentViewModel
 import com.daday.jetpackpro.viewmodel.ViewModelFactory
 import com.daday.jetpackpro.vo.Status
 
@@ -41,8 +41,7 @@ class TvShowFragment : Fragment() {
                             View.VISIBLE
                         Status.SUCCESS -> {
                             fragmentTvShowBinding.progressBar.visibility = View.GONE
-                            contentAdapter.setContent(tvShow.data)
-                            contentAdapter.notifyDataSetChanged()
+                            contentAdapter.submitList(tvShow.data)
                         }
                         Status.ERROR -> {
                             fragmentTvShowBinding.progressBar.visibility = View.GONE

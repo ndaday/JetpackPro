@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackPro"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.favorite.FavoriteActivity"></activity>
         <activity
             android:name=".utils.SplashScreenActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
@@ -26,7 +25,7 @@
         <activity
             android:name=".ui.detail.DetailActivity"
             android:parentActivityName=".ui.home.MainActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
+            android:theme="@style/Theme.JetpackPro">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.daday.jetpackpro.ui.home.MainActivity" />

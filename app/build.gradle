@@ -51,9 +51,14 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation "androidx.activity:activity-ktx:1.1.0"
+    implementation "androidx.activity:activity-ktx:1.2.0"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationFragment"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationFragment"
 
     implementation "androidx.room:room-runtime:$roomRuntimeVersion"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
     kapt "androidx.room:room-compiler:$roomVersion"
 
     implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"
@@ -73,7 +78,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$junitExtversion"
 
     //architecture component
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$archLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
-    implementation "androidx.paging:paging-runtime:$pagingVersion"
+    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
 }

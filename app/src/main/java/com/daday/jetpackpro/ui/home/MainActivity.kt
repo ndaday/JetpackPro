@@ -1,38 +1,29 @@
 package com.daday.jetpackpro.ui.home
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.daday.jetpackpro.R
-import com.daday.jetpackpro.databinding.ActivityMainBinding
-import com.daday.jetpackpro.ui.favorite.FavoriteActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(activityMainBinding.root)
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        activityMainBinding.viewPager.adapter = sectionsPagerAdapter
-        activityMainBinding.tabs.setupWithViewPager(activityMainBinding.viewPager)
+        val navController = findNavController(R.id.nav_host_fragment)
 
-        supportActionBar?.elevation = 0f
-    }
+        val appBarConfiguration = AppBarConfiguration.Builder(
+            R.id.navigation_movie, R.id.navigation_tvshow, R.id.navigation_favorite
+        ).build()
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_detail, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_favorite){
-            val intent = Intent(this, FavoriteActivity::class.java)
-            startActivity(intent)
-        }
-        return super.onOptionsItemSelected(item)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 }

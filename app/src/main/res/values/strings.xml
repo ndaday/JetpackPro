@@ -7,6 +7,9 @@
     <string name="rating">Rating</string>
     <string name="tvshows">TV SHOWS</string>
     <string name="movies">MOVIES</string>
+    <string name="fav_tv_show">FAVORITE TV SHOW</string>
+    <string name="fav_movie">FAVORITE MOVIE</string>
+    <string name="favorite">FAVORITE</string>
     <string name="image_splashscreen">img_splash</string>
     <string name="detail">Detail</string>
     <string name="menu_favorite">Menu Favorite</string>
@@ -14,6 +17,8 @@
     <string name="empty_state_title">No favorites yet</string>
     <string name="empty_state_desc_no_favorite_item_movie">You don\'t have a list of favorite movie</string>
     <string name="empty_state_desc_no_favorite_item_tvshow">You don\'t have a list of favorite tv show</string>
-    <string name="favorite">Favorite</string>
+    
+    <string name="message_undo">Cancel deleted the previous item?</string>
+    <string name="message_ok">OK</string>
 
 </resources>

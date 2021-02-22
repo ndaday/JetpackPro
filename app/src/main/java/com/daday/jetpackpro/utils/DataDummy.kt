@@ -1,24 +1,26 @@
 package com.daday.jetpackpro.utils
 
-import com.daday.jetpackpro.data.source.local.entity.DataEntity
+import com.daday.jetpackpro.data.source.local.entity.MovieEntity
+import com.daday.jetpackpro.data.source.local.entity.TvShowEntity
 import com.daday.jetpackpro.data.source.remote.response.ContentResponse
 
 object DataDummy {
 
-    fun generateDummyMovies(): List<DataEntity> {
-        val movies = ArrayList<DataEntity>()
+    fun generateDummyMovies(): List<MovieEntity> {
+        val movies = ArrayList<MovieEntity>()
 
         movies.add(
-            DataEntity("m1",
+            MovieEntity("m1",
                 "A Star is Born",
                 "October 5, 2018",
                 "75",
                 "Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even as Ally's career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons.",
-                "https://image.tmdb.org/t/p/w600_and_h900_bestv2/wrFpXMNBRj2PBiN4Z5kix51XaIZ.jpg"
+                "https://image.tmdb.org/t/p/w600_and_h900_bestv2/wrFpXMNBRj2PBiN4Z5kix51XaIZ.jpg",
+                false
             )
         )
         movies.add(
-            DataEntity("m2",
+            MovieEntity("m2",
                 "Aquaman",
                 "December 21, 2018",
                 "68",
@@ -27,7 +29,7 @@ object DataDummy {
             )
         )
         movies.add(
-            DataEntity("m3",
+            MovieEntity("m3",
                 "Avenger: Invinity War",
                 "April 27, 2018",
                 "83",
@@ -36,7 +38,7 @@ object DataDummy {
             )
         )
         movies.add(
-            DataEntity("m4",
+            MovieEntity("m4",
                 "Bohemian Rhapsody",
                 "November 2, 2018",
                 "80",
@@ -45,7 +47,7 @@ object DataDummy {
             )
         )
         movies.add(
-            DataEntity("m5",
+            MovieEntity("m5",
                 "Creed II",
                 "November 21, 2018",
                 "67",
@@ -54,7 +56,7 @@ object DataDummy {
             )
         )
         movies.add(
-            DataEntity("m6",
+            MovieEntity("m6",
                 "Glass",
                 "January 3, 2019",
                 "77",
@@ -63,7 +65,7 @@ object DataDummy {
             )
         )
         movies.add(
-            DataEntity("m7",
+            MovieEntity("m7",
                 "How To Train Your Dragon: The Hidden World",
                 "January 16, 2019",
                 "66",
@@ -72,7 +74,7 @@ object DataDummy {
             )
         )
         movies.add(
-            DataEntity("m8",
+            MovieEntity("m8",
                 "Mortal Engine",
                 "November 27, 2018",
                 "61",
@@ -81,7 +83,7 @@ object DataDummy {
             )
         )
         movies.add(
-            DataEntity("m9",
+            MovieEntity("m9",
                 "Robin Hood",
                 "November 21, 2018",
                 "58",
@@ -90,7 +92,7 @@ object DataDummy {
             )
         )
         movies.add(
-            DataEntity("m10",
+            MovieEntity("m10",
                 "Spider-man",
                 "May 5, 2002",
                 "72",
@@ -102,11 +104,11 @@ object DataDummy {
         return movies
     }
 
-    fun generateDummyTvShows(): List<DataEntity> {
-        val tvShows = ArrayList<DataEntity>()
+    fun generateDummyTvShows(): List<TvShowEntity> {
+        val tvShows = ArrayList<TvShowEntity>()
 
         tvShows.add(
-            DataEntity("tv1",
+            TvShowEntity("tv1",
                 "Arrow",
                 "October 10, 2012",
                 "58",
@@ -115,7 +117,7 @@ object DataDummy {
             )
         )
         tvShows.add(
-            DataEntity("tv2",
+            TvShowEntity("tv2",
                 "Doom Patrol",
                 "February 15, 2019",
                 "65",
@@ -124,7 +126,7 @@ object DataDummy {
             )
         )
         tvShows.add(
-            DataEntity("tv3",
+            TvShowEntity("tv3",
                 "Family Guy",
                 "January 31, 1999",
                 "65",
@@ -133,7 +135,7 @@ object DataDummy {
             )
         )
         tvShows.add(
-            DataEntity("tv4",
+            TvShowEntity("tv4",
                 "The Flash",
                 "October 7, 2014",
                 "67",
@@ -142,7 +144,7 @@ object DataDummy {
             )
         )
         tvShows.add(
-            DataEntity("tv5",
+            TvShowEntity("tv5",
                 "Gotham",
                 "September 22, 2014",
                 "69",
@@ -151,7 +153,7 @@ object DataDummy {
             )
         )
         tvShows.add(
-            DataEntity("tv6",
+            TvShowEntity("tv6",
                 "Grey Anatomy",
                 "March 27, 2005",
                 "64",
@@ -160,7 +162,7 @@ object DataDummy {
             )
         )
         tvShows.add(
-            DataEntity("tv7",
+            TvShowEntity("tv7",
                 "Iron Fist",
                 "March 17, 2017",
                 "61",
@@ -169,7 +171,7 @@ object DataDummy {
             )
         )
         tvShows.add(
-            DataEntity("tv8",
+            TvShowEntity("tv8",
                 "SuperGirl",
                 "October 26, 2015",
                 "59",
@@ -178,7 +180,7 @@ object DataDummy {
             )
         )
         tvShows.add(
-            DataEntity("tv9",
+            TvShowEntity("tv9",
                 "Supernatural",
                 "September 13, 2005",
                 "74",
@@ -187,7 +189,7 @@ object DataDummy {
             )
         )
         tvShows.add(
-            DataEntity("tv10",
+            TvShowEntity("tv10",
                 "The Simpson",
                 "December 16, 1989",
                 "72",
@@ -391,5 +393,15 @@ object DataDummy {
         )
 
         return tvShows
+    }
+
+    fun generateDummyMovieDetail(content: MovieEntity, favorited: Boolean): MovieEntity {
+        content.favorite = favorited
+        return MovieEntity(content.id, content.title, content.releaseDate,content.rating,content.overviews,content.imagePath,false)
+    }
+
+    fun generateDummyTvShowDetail(content: TvShowEntity, favorited: Boolean): TvShowEntity {
+        content.favorite = favorited
+        return TvShowEntity(content.id, content.title, content.releaseDate,content.rating,content.overviews,content.imagePath,false)
     }
 }

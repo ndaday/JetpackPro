@@ -11,8 +11,8 @@ import com.daday.jetpackpro.vo.Resource
 
 class DetailViewModel (private val contentRepository: ContentRepository) : ViewModel(){
 
-    val movieId = MutableLiveData<String>()
-    val tvShowId = MutableLiveData<String>()
+    private val movieId = MutableLiveData<String>()
+    private val tvShowId = MutableLiveData<String>()
 
     fun setMovieId(movieId: String) {
         this.movieId.value = movieId
@@ -54,9 +54,4 @@ class DetailViewModel (private val contentRepository: ContentRepository) : ViewM
             }
         }
     }
-
-//    fun getMovieDetail(): LiveData<Resource<DataEntity>> = contentRepository.getMovieDetail(movieId)
-//
-//    fun getTvShowDetail(): LiveData<Resource<DataEntity>> = contentRepository.getTvShowDetail(tvShowId)
-
 }

@@ -3,9 +3,9 @@ package com.daday.jetpackpro.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.daday.jetpackpro.ui.ContentViewModel
 import com.daday.jetpackpro.data.ContentRepository
 import com.daday.jetpackpro.di.Injection
+import com.daday.jetpackpro.ui.ContentViewModel
 import com.daday.jetpackpro.ui.detail.DetailViewModel
 
 class ViewModelFactory private constructor(private val mContentRepository: ContentRepository) : ViewModelProvider.NewInstanceFactory() {
