@@ -56,6 +56,7 @@ class DetailViewModelTest {
         viewModel.contentMovie.observeForever(observerMovie)
 
         verify(contentRepository).getMovieDetail(movieId)
+        verify(observerMovie).onChanged(dummyDetail)
     }
 
     @Test
@@ -69,5 +70,6 @@ class DetailViewModelTest {
         viewModel.contentTvShow.observeForever(observerTvShow)
 
         verify(contentRepository).getTvShowDetail(tvShowId)
+        verify(observerTvShow).onChanged(dummyDetail)
     }
 }

@@ -15,13 +15,10 @@ import com.daday.jetpackpro.utils.DataDummy
 import com.daday.jetpackpro.utils.EspressoIdlingResource
 import org.junit.After
 import org.junit.Before
-import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.MethodSorters
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-@FixMethodOrder(MethodSorters.DEFAULT)
 class MainActivityTest {
     private val dummyMovie = DataDummy.generateDummyMovies()
     private val dummyTvShow = DataDummy.generateDummyTvShows()
@@ -57,6 +54,7 @@ class MainActivityTest {
 
     @Test
     fun loadDetailMovie() {
+        delayTwoSecond()
         onView(withId(R.id.rv_Movies)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_Movies)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.tv_item_title)).check(matches(isDisplayed()))
@@ -73,7 +71,9 @@ class MainActivityTest {
 
     @Test
     fun loadDetailTvShow() {
+        delayTwoSecond()
         onView(withId(R.id.navigation_tvshow)).perform(click())
+        delayTwoSecond()
         onView(withId(R.id.rv_tvshow)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_tvshow)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.tv_item_title)).check(matches(isDisplayed()))
@@ -85,18 +85,21 @@ class MainActivityTest {
         onView(withId(R.id.tv_item_overview)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_item_overview)).check(matches(withText(dummyTvShow[0].overviews)))
         onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
-
     }
 
 
     @Test
-    fun loadFavoriteMovie() {
+    fun insertLoadDeleteFavoriteMovie() {
+        delayTwoSecond()
         onView(withId(R.id.rv_Movies)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_Movies)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        delayTwoSecond()
         onView(withId(R.id.action_favorite)).perform(click())
+        delayTwoSecond()
         onView(isRoot()).perform(ViewActions.pressBack())
         onView(withId(R.id.navigation_favorite)).perform(click())
         onView(withText(R.string.fav_movie)).perform(click())
+        delayTwoSecond()
         onView(withId(R.id.rv_MovieFav)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_MovieFav)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.tv_item_title)).check(matches(isDisplayed()))
@@ -105,18 +108,23 @@ class MainActivityTest {
         onView(withId(R.id.tv_item_overview)).check(matches(isDisplayed()))
         onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.action_favorite)).perform(click())
+        delayTwoSecond()
         onView(isRoot()).perform(ViewActions.pressBack())
     }
 
     @Test
-    fun loadFavoriteTvShow() {
+    fun insertLoadDeleteFavoriteTvShow() {
+        delayTwoSecond()
         onView(withId(R.id.navigation_tvshow)).perform(click())
         onView(withId(R.id.rv_tvshow)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_tvshow)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        delayTwoSecond()
         onView(withId(R.id.action_favorite)).perform(click())
+        delayTwoSecond()
         onView(isRoot()).perform(ViewActions.pressBack())
         onView(withId(R.id.navigation_favorite)).perform(click())
         onView(withText(R.string.fav_tv_show)).perform(click())
+        delayTwoSecond()
         onView(withId(R.id.rv_tvshowFav)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_tvshowFav)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.tv_item_title)).check(matches(isDisplayed()))
@@ -125,6 +133,15 @@ class MainActivityTest {
         onView(withId(R.id.tv_item_overview)).check(matches(isDisplayed()))
         onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.action_favorite)).perform(click())
+        delayTwoSecond()
         onView(isRoot()).perform(ViewActions.pressBack())
+    }
+
+    private fun delayTwoSecond() {
+        try {
+            Thread.sleep(2000)
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        }
     }
 }

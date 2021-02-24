@@ -63,10 +63,10 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
         return resultTvShow
     }
 
-//    interface LoadMovieCallback {
-//        fun onAllMovieReceived(movieResponses: List<ContentResponse>)
-//    }
-//    interface LoadTvShowCallback {
-//        fun onAllTvShowReceived(tvShowResponses: List<ContentResponse>)
-//    }
+    interface LoadMovieCallback {
+        fun onAllMovieReceived(movieResponses: List<ContentResponse>)
+    }
+    interface LoadTvShowCallback {
+        fun onAllTvShowReceived(tvShowResponses: List<ContentResponse>)
+    }
 }

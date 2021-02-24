@@ -4,6 +4,7 @@
     package="com.daday.jetpackpro">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INSTALL_GRANT_RUNTIME_PERMISSIONS " />
 
     <application
         android:allowBackup="true"

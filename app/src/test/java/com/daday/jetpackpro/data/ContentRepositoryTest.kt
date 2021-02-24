@@ -43,7 +43,6 @@ class ContentRepositoryTest {
         `when`(local.getMovie()).thenReturn(dataSourceFactory)
         contentRepository.getAllMovie()
 
-
         val dataEntities = Resource.success(PagedListUtil.mockPagedList(DataDummy.generateDummyMovies()))
         verify(local).getMovie()
         assertNotNull(dataEntities.data)
