@@ -1,7 +1,9 @@
 package com.daday.jetpackpro.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.paging.DataSource
 import com.daday.jetpackpro.data.source.local.LocalDataSource
 import com.daday.jetpackpro.data.source.local.entity.MovieEntity
@@ -12,11 +14,15 @@ import com.daday.jetpackpro.utils.DataDummy
 import com.daday.jetpackpro.utils.LiveDataTestUtil
 import com.daday.jetpackpro.utils.PagedListUtil
 import com.daday.jetpackpro.vo.Resource
+import com.nhaarman.mockitokotlin2.doNothing
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.spy
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 
@@ -35,6 +41,7 @@ class ContentRepositoryTest {
     private val movieId = movieResponses[0].id
     private val tvShowResponses = DataDummy.generateRemoteDummyTvShows()
     private val tvShowId = tvShowResponses[0].id
+
 
 
     @Test
@@ -110,5 +117,45 @@ class ContentRepositoryTest {
         verify(local).getTvShowFavorite()
         assertNotNull(contentEntities)
         assertEquals(tvShowResponses.size.toLong(), contentEntities.data?.size?.toLong())
+    }
+
+    @Test
+    fun setFavoriteMovie(){
+        val dummyDetail = Resource.success(DataDummy.generateDummyMovieDetail(DataDummy.generateDummyMovies()[0], true))
+        val content = MutableLiveData<Resource<MovieEntity>>()
+        val dummy = MutableLiveData<MovieEntity>()
+        content.value = dummyDetail
+        val dataResource = dummyDetail.data
+
+        if (dataResource != null) {
+            val dataEntity = MovieEntity(dataResource.id,dataResource.title,dataResource.releaseDate,dataResource.rating,dataResource.overviews,dataResource.imagePath)
+            `when`(
+                spy(local.setMovieFavorite( dataEntity, true))).thenCallRealMethod()
+        }
+
+        dummy.value?.let { Mockito.verify(contentRepository).setMovieFavorite(it, true) }
+        assertNotNull(dataResource)
+        assertNotNull(dataResource?.title)
+        assertEquals(movieResponses[0].title, dataResource?.title)
+    }
+
+    @Test
+    fun setFavoriteTvShow(){
+        val dummyDetail = Resource.success(DataDummy.generateDummyTvShowDetail(DataDummy.generateDummyTvShows()[0], true))
+        val content = MutableLiveData<Resource<TvShowEntity>>()
+        val dummy = MutableLiveData<TvShowEntity>()
+        content.value = dummyDetail
+        val dataResource = dummyDetail.data
+
+        if (dataResource != null) {
+            val dataEntity = TvShowEntity(dataResource.id,dataResource.title,dataResource.releaseDate,dataResource.rating,dataResource.overviews,dataResource.imagePath)
+            `when`(
+                spy(local.setTvShowFavorite( dataEntity, true))).thenCallRealMethod()
+        }
+
+        dummy.value?.let { Mockito.verify(contentRepository).setTvShowFavorite(it, true) }
+        assertNotNull(dataResource)
+        assertNotNull(dataResource?.title)
+        assertEquals(tvShowResponses[0].title, dataResource?.title)
     }
 }

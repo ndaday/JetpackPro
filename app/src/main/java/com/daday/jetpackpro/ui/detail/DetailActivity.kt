@@ -147,12 +147,12 @@ class DetailActivity : AppCompatActivity() {
         val type = intent.getStringExtra(EXTRA_TYPE)
         if (type.equals(MOVIE, true)){
             if (item.itemId == R.id.action_favorite){
-                viewModel.setBookmarkMovie()
+                viewModel.setFavoriteMovie()
                 return true
             }
         } else if (type.equals(TVSHOW, true)){
             if (item.itemId == R.id.action_favorite){
-                viewModel.setBookmarkTvShow()
+                viewModel.setFavoriteTvShow()
                 return true
             }
         }

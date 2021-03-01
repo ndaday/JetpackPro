@@ -8,13 +8,15 @@ import com.daday.jetpackpro.data.source.local.entity.MovieEntity
 import com.daday.jetpackpro.data.source.local.entity.TvShowEntity
 import com.daday.jetpackpro.utils.DataDummy
 import com.daday.jetpackpro.vo.Resource
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.spy
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Answers
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -71,5 +73,44 @@ class DetailViewModelTest {
 
         verify(contentRepository).getTvShowDetail(tvShowId)
         verify(observerTvShow).onChanged(dummyDetail)
+    }
+
+
+    @Test
+    fun setFavoriteMovie(){
+        val dummyDetail = Resource.success(DataDummy.generateDummyMovieDetail(dummyMovie, true))
+        val content = MutableLiveData<Resource<MovieEntity>>()
+        val dummy = MutableLiveData<MovieEntity>()
+        content.value = dummyDetail
+        val dataResource = dummyDetail.data
+
+        if (dataResource != null) {
+            val dataEntity = MovieEntity(dataResource.id,dataResource.title,dataResource.releaseDate,dataResource.rating,dataResource.overviews,dataResource.imagePath)
+            lenient().`when`(
+                spy(contentRepository.setMovieFavorite(dataEntity, true))).thenCallRealMethod()
+        }
+
+        viewModel.setFavoriteMovie()
+        dummy.value?.let { verify(contentRepository).setMovieFavorite(it, true) }
+        verifyNoMoreInteractions(observerMovie)
+    }
+
+    @Test
+    fun setFavoriteTvShow(){
+        val dummyDetail = Resource.success(DataDummy.generateDummyTvShowDetail(dummyTvShow, true))
+        val content = MutableLiveData<Resource<TvShowEntity>>()
+        val dummy = MutableLiveData<TvShowEntity>()
+        content.value = dummyDetail
+        val dataResource = dummyDetail.data
+
+        if (dataResource != null) {
+            val dataEntity = TvShowEntity(dataResource.id,dataResource.title,dataResource.releaseDate,dataResource.rating,dataResource.overviews,dataResource.imagePath)
+            lenient().`when`(
+                spy(contentRepository.setTvShowFavorite( dataEntity, true))).thenCallRealMethod()
+        }
+
+        viewModel.setFavoriteTvShow()
+        dummy.value?.let { verify(contentRepository).setTvShowFavorite(it, true) }
+        verifyNoMoreInteractions(observerTvShow)
     }
 }

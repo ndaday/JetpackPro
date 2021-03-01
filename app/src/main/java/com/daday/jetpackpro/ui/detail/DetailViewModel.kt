@@ -29,7 +29,7 @@ class DetailViewModel (private val contentRepository: ContentRepository) : ViewM
         contentRepository.getTvShowDetail(mTvShowId)
     }
 
-    fun setBookmarkMovie() {
+    fun setFavoriteMovie() {
         val movieResource = contentMovie.value
         if (movieResource != null) {
             val movieDetail = movieResource.data
@@ -42,7 +42,7 @@ class DetailViewModel (private val contentRepository: ContentRepository) : ViewM
         }
     }
 
-    fun setBookmarkTvShow() {
+    fun setFavoriteTvShow() {
         val tvResource = contentTvShow.value
         if (tvResource != null) {
             val tvDetail = tvResource.data
