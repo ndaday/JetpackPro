@@ -5,7 +5,6 @@ import com.daday.jetpackpro.data.source.remote.response.ContentResponse
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
-import java.util.*
 
 class JsonHelper (private val context: Context){
 

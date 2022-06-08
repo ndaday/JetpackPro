@@ -1,9 +1,7 @@
 package com.daday.jetpackpro.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.paging.DataSource
 import com.daday.jetpackpro.data.source.local.LocalDataSource
 import com.daday.jetpackpro.data.source.local.entity.MovieEntity
@@ -14,8 +12,6 @@ import com.daday.jetpackpro.utils.DataDummy
 import com.daday.jetpackpro.utils.LiveDataTestUtil
 import com.daday.jetpackpro.utils.PagedListUtil
 import com.daday.jetpackpro.vo.Resource
-import com.nhaarman.mockitokotlin2.doNothing
-import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.spy
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Assert.assertEquals

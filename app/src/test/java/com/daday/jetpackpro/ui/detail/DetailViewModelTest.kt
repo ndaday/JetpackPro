@@ -8,13 +8,11 @@ import com.daday.jetpackpro.data.source.local.entity.MovieEntity
 import com.daday.jetpackpro.data.source.local.entity.TvShowEntity
 import com.daday.jetpackpro.utils.DataDummy
 import com.daday.jetpackpro.vo.Resource
-import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.spy
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Answers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner

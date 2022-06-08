@@ -40,7 +40,7 @@ android {
 
 dependencies {
     //kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.21'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
     implementation "androidx.core:core-ktx:$coreVersion"
 
 
