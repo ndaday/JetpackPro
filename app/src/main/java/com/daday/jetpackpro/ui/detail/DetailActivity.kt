@@ -50,9 +50,9 @@ class DetailActivity : AppCompatActivity() {
         if(type.equals(MOVIE, true)){
             detailBinding.progressBar.visibility = View.VISIBLE
             id?.let { viewModel.setMovieId(it) }
-            viewModel.contentMovie.observe(this, { movie ->
-                if (movie != null){
-                    when(movie.status){
+            viewModel.contentMovie.observe(this) { movie ->
+                if (movie != null) {
+                    when (movie.status) {
                         Status.LOADING -> detailBinding.progressBar.visibility = View.VISIBLE
                         Status.SUCCESS -> if (movie.data != null) {
                             detailBinding.progressBar.visibility = View.GONE
@@ -60,18 +60,22 @@ class DetailActivity : AppCompatActivity() {
                         }
                         Status.ERROR -> {
                             detailBinding.progressBar.visibility = View.GONE
-                            Toast.makeText(applicationContext, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                applicationContext,
+                                "Terjadi kesalahan",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
-            })
+            }
 
         } else if (type.equals(TVSHOW, true)){
             detailBinding.progressBar.visibility = View.VISIBLE
             id?.let { viewModel.setTvShowId(it) }
-            viewModel.contentTvShow.observe(this, { tvShow ->
-                if (tvShow != null){
-                    when(tvShow.status){
+            viewModel.contentTvShow.observe(this) { tvShow ->
+                if (tvShow != null) {
+                    when (tvShow.status) {
                         Status.LOADING -> detailBinding.progressBar.visibility = View.VISIBLE
                         Status.SUCCESS -> if (tvShow.data != null) {
                             detailBinding.progressBar.visibility = View.GONE
@@ -79,11 +83,15 @@ class DetailActivity : AppCompatActivity() {
                         }
                         Status.ERROR -> {
                             detailBinding.progressBar.visibility = View.GONE
-                            Toast.makeText(applicationContext, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                applicationContext,
+                                "Terjadi kesalahan",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
-            })
+            }
         }
     }
 
@@ -105,39 +113,47 @@ class DetailActivity : AppCompatActivity() {
         this.menu =  menu
         val type = intent.getStringExtra(EXTRA_TYPE)
         if (type.equals(MOVIE, true)){
-            viewModel.contentMovie.observe(this, { movieFav ->
-                if (movieFav != null){
-                    when(movieFav.status){
+            viewModel.contentMovie.observe(this) { movieFav ->
+                if (movieFav != null) {
+                    when (movieFav.status) {
                         Status.LOADING -> detailBinding.progressBar.visibility = View.VISIBLE
-                        Status.SUCCESS -> if(movieFav.data != null){
+                        Status.SUCCESS -> if (movieFav.data != null) {
                             detailBinding.progressBar.visibility = View.GONE
                             val state = movieFav.data.favorite
                             setFavoriteState(state)
                         }
                         Status.ERROR -> {
                             detailBinding.progressBar.visibility = View.GONE
-                            Toast.makeText(applicationContext, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                applicationContext,
+                                "Terjadi kesalahan",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
-            })
+            }
         } else if (type.equals(TVSHOW, true)){
-            viewModel.contentTvShow.observe(this, { tvShowFav ->
-                if (tvShowFav != null){
-                    when(tvShowFav.status){
+            viewModel.contentTvShow.observe(this) { tvShowFav ->
+                if (tvShowFav != null) {
+                    when (tvShowFav.status) {
                         Status.LOADING -> detailBinding.progressBar.visibility = View.VISIBLE
-                        Status.SUCCESS -> if(tvShowFav.data != null){
+                        Status.SUCCESS -> if (tvShowFav.data != null) {
                             detailBinding.progressBar.visibility = View.GONE
                             val state = tvShowFav.data.favorite
                             setFavoriteState(state)
                         }
                         Status.ERROR -> {
                             detailBinding.progressBar.visibility = View.GONE
-                            Toast.makeText(applicationContext, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                applicationContext,
+                                "Terjadi kesalahan",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
-            })
+            }
         }
         return true
     }
@@ -145,18 +161,13 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val type = intent.getStringExtra(EXTRA_TYPE)
-        if (type.equals(MOVIE, true)){
-            if (item.itemId == R.id.action_favorite){
-                viewModel.setFavoriteMovie()
+        if (item.itemId == R.id.action_favorite){
+                when {
+                    type.equals(MOVIE, true) -> viewModel.setFavoriteMovie()
+                    type.equals(TVSHOW, true) -> viewModel.setFavoriteTvShow()
+                }
                 return true
             }
-        } else if (type.equals(TVSHOW, true)){
-            if (item.itemId == R.id.action_favorite){
-                viewModel.setFavoriteTvShow()
-                return true
-            }
-        }
-
         return super.onOptionsItemSelected(item)
     }
 

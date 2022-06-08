@@ -62,11 +62,4 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
         }, SERVICE_LATENCY_IN_MILLIS)
         return resultTvShow
     }
-
-    interface LoadMovieCallback {
-        fun onAllMovieReceived(movieResponses: List<ContentResponse>)
-    }
-    interface LoadTvShowCallback {
-        fun onAllTvShowReceived(tvShowResponses: List<ContentResponse>)
-    }
 }

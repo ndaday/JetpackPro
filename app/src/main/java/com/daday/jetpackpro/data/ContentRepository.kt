@@ -28,7 +28,7 @@ class ContentRepository private constructor(
             appExecutors: AppExecutors
         ): ContentRepository =
             instance ?: synchronized(this) {
-                instance ?: ContentRepository(remoteData, localData, appExecutors)
+                ContentRepository(remoteData, localData, appExecutors).apply { instance = this }
             }
     }
 

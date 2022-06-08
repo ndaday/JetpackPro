@@ -34,9 +34,9 @@ class TvShowFragment : Fragment() {
             val viewModel = ViewModelProvider(this, factory)[ContentViewModel::class.java]
 
             val contentAdapter = TvShowAdapter()
-            viewModel.getListTvShow().observe(viewLifecycleOwner, {tvShow ->
-                if (tvShow != null){
-                    when(tvShow.status) {
+            viewModel.getListTvShow().observe(viewLifecycleOwner) { tvShow ->
+                if (tvShow != null) {
+                    when (tvShow.status) {
                         Status.LOADING -> fragmentTvShowBinding.progressBar.visibility =
                             View.VISIBLE
                         Status.SUCCESS -> {
@@ -49,9 +49,9 @@ class TvShowFragment : Fragment() {
                         }
                     }
                 }
-            })
+            }
             with(fragmentTvShowBinding.rvTvshow) {
-                this.layoutManager = LinearLayoutManager(context)
+                layoutManager = LinearLayoutManager(context)
                 this.setHasFixedSize(true)
                 this.adapter = contentAdapter
             }

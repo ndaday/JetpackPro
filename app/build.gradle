@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.daday.jetpackpro"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
@@ -40,7 +40,7 @@ android {
 
 dependencies {
     //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.21'
     implementation "androidx.core:core-ktx:$coreVersion"
 
 
@@ -51,14 +51,14 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation "androidx.activity:activity-ktx:1.2.0"
+    implementation 'androidx.activity:activity-ktx:1.4.0'
 
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationFragment"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationFragment"
 
     implementation "androidx.room:room-runtime:$roomRuntimeVersion"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     kapt "androidx.room:room-compiler:$roomVersion"
 
     implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"

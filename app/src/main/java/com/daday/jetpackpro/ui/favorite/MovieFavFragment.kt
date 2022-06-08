@@ -41,10 +41,10 @@ class MovieFavFragment : Fragment() {
 
             adapter = MovieAdapter()
             fragmentMovieFavBinding.progressBar.visibility = View.VISIBLE
-            viewModel.getMovieFav().observe(viewLifecycleOwner, { movieFav ->
+            viewModel.getMovieFav().observe(viewLifecycleOwner) { movieFav ->
                 fragmentMovieFavBinding.progressBar.visibility = View.GONE
                 adapter.submitList(movieFav)
-            })
+            }
 
             fragmentMovieFavBinding.rvMovieFav.layoutManager = LinearLayoutManager(context)
             fragmentMovieFavBinding.rvMovieFav.setHasFixedSize(true)

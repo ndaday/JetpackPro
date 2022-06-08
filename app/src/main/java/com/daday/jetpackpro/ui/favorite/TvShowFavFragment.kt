@@ -43,10 +43,10 @@ class TvShowFavFragment : Fragment() {
 
             adapter = TvShowAdapter()
             fragmentTvShowFavBinding.progressBar.visibility = View.VISIBLE
-            viewModel.getTvShowFav().observe(viewLifecycleOwner, { tvShowFav ->
+            viewModel.getTvShowFav().observe(viewLifecycleOwner) { tvShowFav ->
                 fragmentTvShowFavBinding.progressBar.visibility = View.GONE
                 adapter.submitList(tvShowFav)
-            })
+            }
 
             fragmentTvShowFavBinding.rvTvshowFav.layoutManager = LinearLayoutManager(context)
             fragmentTvShowFavBinding.rvTvshowFav.setHasFixedSize(true)
